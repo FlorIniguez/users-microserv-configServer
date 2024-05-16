@@ -6,6 +6,7 @@ spring:
     password: ''
     url: 'jdbc:mysql://localhost:3306/posts'
     username: root
+
   jpa:
     show-sql: true
     hibernate:
@@ -13,6 +14,7 @@ spring:
     properties:
       hibernate: null
     dialect: org.hibernate.dialect.MySQLDialect
+
 eureka:
   client:
     registerWithEureka: true
