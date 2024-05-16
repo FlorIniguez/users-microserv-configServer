@@ -1,0 +1,30 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: 'jdbc:mysql://localhost:3306/users'
+    username: root
+    password: ''
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+
+fakeUsers:
+  url: '${URL_USERS:https://6642c1e43c01a059ea2056ee.mockapi.io/api/v1/users}'
+
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: 'http://localhost:8761/eureka'
+  instance:
+    instance-id:
+      ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    preferIpAddress: true
