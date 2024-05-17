@@ -7,4 +7,6 @@ Configuración basada en repositorio
 Mediante mockAPI se generó un listado de usuarios para guardar en base de datos MySQL, para así poder realizar operaciones con estos usuarios. Dejo link de usuarios con los atributos necesarios para interactuar con el proyecto.
 
 [Generar users](https://mockapi.io/clone/6642c1e43c01a059ea2056ef)
-<a href= "https://mockapi.io/clone/6642c1e43c01a059ea2056ef" target="_blank" > Generar users </a>
+
+<p>https://mockapi.io/clone/6642c1e43c01a059ea2056ef</p>
+
