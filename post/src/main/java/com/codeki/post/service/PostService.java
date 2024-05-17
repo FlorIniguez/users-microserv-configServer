@@ -3,20 +3,18 @@ package com.codeki.post.service;
 import com.codeki.post.exceptions.ResourceNotFoundException;
 import com.codeki.post.model.Post;
 import com.codeki.post.model.PostDto;
-import com.codeki.post.model.UserDto;
 import com.codeki.post.repository.PostRepository;
 import com.codeki.post.utils.PostUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
 public class PostService {
     @Autowired
     PostRepository postRepository;
-    @Autowired
-    private UserClient userClient;
     @Autowired
     PostUtils postUtils;
 
@@ -41,9 +39,10 @@ public class PostService {
         Post searchedPost = postRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Post", "id", id));
         //actualizar post
-        searchedPost.setTitle((post.getTitle()));
+        searchedPost.setTitle(post.getTitle());
         searchedPost.setContent(post.getContent());
-        searchedPost.setImage((post.getImage()));
+        searchedPost.setImage(post.getImage());
+        searchedPost.setPostDate(post.getPostDate());
         //lo guardo
         return postRepository.save(searchedPost);
 

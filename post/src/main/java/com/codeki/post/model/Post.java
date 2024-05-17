@@ -1,13 +1,13 @@
 package com.codeki.post.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Data
 @Builder
@@ -21,7 +21,11 @@ public class Post {
     private String title;
     private String content;
     private String image;
+    private LocalDateTime postDate;
     private Long userId;
 
-
+    @PrePersist
+    public void setPostDate() {
+        this.postDate = LocalDateTime.now();
+    }
 }

@@ -17,7 +17,7 @@ public class PostUtils {
 
     public PostDto postToDto(Post post) {
         UserDto userDto = userClient.findUserById(post.getUserId());
-        return new PostDto(post.getId(), post.getTitle(), post.getContent(), post.getImage(), userDto);
+        return new PostDto(post.getId(), post.getTitle(), post.getContent(), post.getImage(),post.getPostDate(), userDto);
 
     }
 
@@ -27,7 +27,7 @@ public class PostUtils {
                     //por medio de feingClient llamo al servivio de usuarios para obtener el userDto
                     UserDto userDto = userClient.findUserById(post.getUserId());
 
-                    return new PostDto(post.getId(), post.getTitle(), post.getContent(), post.getImage(), userDto);
+                    return new PostDto(post.getId(), post.getTitle(), post.getContent(), post.getImage(),post.getPostDate(), userDto);
                 })
                 .collect(Collectors.toList());
     }
