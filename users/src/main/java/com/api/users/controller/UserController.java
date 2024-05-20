@@ -37,6 +37,10 @@ public class UserController {
     public List<User> findUserByNameController(@PathVariable String name){
         return userService.findUserByName(name);
     }
+    @GetMapping("/username/{username}")
+    public List<User> findUserByUsernameController(@PathVariable String userName){
+        return userService.findUserByUsername(userName);
+    }
 
     @PostMapping("/add")
     public Optional<User> createUserController(@RequestBody User user) {

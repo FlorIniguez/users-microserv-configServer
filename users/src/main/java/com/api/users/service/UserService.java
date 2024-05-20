@@ -52,6 +52,10 @@ public class UserService {
         List<User> userList = userRepository.findAll();
         return userUtils.detectUserByName(userList,name);
     }
+    public List<User> findUserByUsername(String userName) {
+        List<User> userList = userRepository.findAll();
+        return userUtils.detectUserByUsername(userList,userName);
+    }
 
     public Optional<User> createUser(User user) {
         return Optional.of(userRepository.save(user));
@@ -72,6 +76,7 @@ public class UserService {
         User user = userRepository.findById(id).orElseThrow(() -> new ResourcedNotFoundException("User", "Id", id));
         userRepository.deleteById(user.getId());
     }
+
 
 
 }

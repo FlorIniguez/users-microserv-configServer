@@ -31,4 +31,9 @@ public class UserUtils {
                 .filter(user -> user.getName().equalsIgnoreCase(name))
                 .collect(Collectors.toList());
     }
+    public List<User> detectUserByUsername(List<User> userList, String username) {
+        return userList.stream()
+                .filter(user -> user.getUsername().equalsIgnoreCase(username))
+                .collect(Collectors.toList());
+    }
 }
