@@ -1,9 +1,6 @@
 package com.api.users.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,6 +11,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "app-users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,4 +21,11 @@ public class User {
     private String username;
     private String avatar;
 
+    //constructor sin ID para test
+    public User(String name, String email, String username, String avatar) {
+        this.name = name;
+        this.email = email;
+        this.username = username;
+        this.avatar = avatar;
+    }
 }

@@ -48,6 +48,10 @@ public class UserService {
                 .orElseThrow(() -> new ResourcedNotFoundException("User", "id", id));
         return userUtils.convertedUserDto(user);
     }
+    public List<User>findUserByName(String name) {
+        List<User> userList = userRepository.findAll();
+        return userUtils.detectUserByName(userList,name);
+    }
 
     public Optional<User> createUser(User user) {
         return Optional.of(userRepository.save(user));
@@ -65,9 +69,11 @@ public class UserService {
     }
 
     public void deleteUser(Long id) throws ResourcedNotFoundException {
-        User user = userRepository.findById(id).orElseThrow(() -> new ResourcedNotFoundException("Flight", "Id", id));
+        User user = userRepository.findById(id).orElseThrow(() -> new ResourcedNotFoundException("User", "Id", id));
         userRepository.deleteById(user.getId());
     }
+
+
 }
 
 
