@@ -6,7 +6,6 @@ import com.api.users.model.UserDto;
 import com.api.users.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.Optional;
@@ -33,6 +32,10 @@ public class UserController {
     @GetMapping("/{id}")
     public UserDto findUserByIdController(@PathVariable Long id) {
             return userService.findUserById(id);
+    }
+    @GetMapping("/name/{name}")
+    public List<User> findUserByNameController(@PathVariable String name){
+        return userService.findUserByName(name);
     }
 
     @PostMapping("/add")

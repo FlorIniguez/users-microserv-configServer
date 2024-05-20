@@ -7,6 +7,7 @@ import com.codeki.post.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -26,13 +27,14 @@ public class PostController {
     }
 
     //--- BUSCAR POST CON DATOS DEL USUARIO
-    @GetMapping("/user/{postId}")
+    @GetMapping("/{postId}")
     public PostDto getPostWhitUserController(@PathVariable Long postId) {
         return postService.getPostWithUser(postId);
     }
 
     @PutMapping("/update/{id}")
     public Post updatePostController(@PathVariable Long id, @RequestBody Post post) {
+        post.setPostDate(LocalDateTime.now());
         return postService.updatePost(id, post);
     }
 

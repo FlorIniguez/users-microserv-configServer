@@ -5,7 +5,6 @@ import com.api.users.model.UserDto;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Component
@@ -25,5 +24,11 @@ public class UserUtils {
     //DE DTO A USER
     public User dtoToUser(UserDto userDto) {
         return new User(userDto.getId(), userDto.getName(), userDto.getUsername(), userDto.getEmail(), userDto.getAvatar());
+    }
+
+    public List<User> detectUserByName(List<User> userList, String name) {
+       return userList.stream()
+                .filter(user -> user.getName().equalsIgnoreCase(name))
+                .collect(Collectors.toList());
     }
 }
